@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Meta.Models.Employee>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+<a asp-action="Create">Добавить пользователя</a>
+
+
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Команда: </label>
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<table class="table">
+    <tr><td>Имя</td><td>Возраст</td><td>Телефон</td></tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.Name</td>
+    <td>@item.Surname</td>
+    <td>@item.Phone</td>
+    <td>
+        <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a> |
+        <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id">Удалить</a>
+    </td>
+</tr>
+    }
+</table>
